@@ -5,4 +5,4 @@ public interface ISolver
 {
     List<int[]> TwoSum(int[] nums, int target);
     string Name { get; }
-}gir
+}
