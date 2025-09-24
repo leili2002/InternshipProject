@@ -11,25 +11,22 @@ public class Program
 {
     public static void Main()
     {
-// 1. Setup DI container
-        var services = new ServiceCollection();
 
-// Register solvers
+        var services = new ServiceCollection();
         services.AddTransient<ISolver, BruteForceSolver>();
         services.AddTransient<ISolver, TwoPointerFastSortSolver>();
         services.AddTransient<ISolver, TwoPointerLowSpaceSortSolver>();
         services.AddTransient<ISolver, HashMapSolver>();
 
-// Register factory
         services.AddSingleton<SolverFactory>();
 
-// Build provider
+
         var provider = services.BuildServiceProvider();
 
-// 2. Resolve factory
+
         var factory = provider.GetRequiredService<SolverFactory>();
 
-// 3. User input
+
         Console.WriteLine("Enter array elements (comma separated):");
         int[] nums = Array.ConvertAll(Console.ReadLine().Split(','), int.Parse);
 
@@ -42,7 +39,8 @@ public class Program
 
         string choiceName = Console.ReadLine();
 
-// 4. Run chosen solver
+
+        
         try
         {
             ISolver solver = factory.GetSolver(choiceName);
